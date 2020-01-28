@@ -1,13 +1,14 @@
 {
-  "name": "gatsby-starter-blog",
+  "name": "lastest-version-d3js-demos",
   "private": true,
-  "description": "A starter for a blog powered by Gatsby and Markdown",
+  "description": "New and rewritten D3.js demos in the lastest version",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Ta Sy Tan <sytanta@yahoo.com>",
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/sytanta/d3js-demos"
   },
   "dependencies": {
+    "d3": "^5.15.0",
     "gatsby": "^2.19.7",
     "gatsby-image": "^2.2.39",
     "gatsby-plugin-feed": "^2.3.26",
@@ -38,7 +39,7 @@
   "devDependencies": {
     "prettier": "^1.19.1"
   },
-  "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
+  "homepage": "https://github.com/sytanta/d3js-demos",
   "keywords": [
     "gatsby"
   ],
@@ -46,7 +47,7 @@
   "main": "n/a",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gatsbyjs/gatsby-starter-blog.git"
+    "url": "git+https://github.com/sytanta/d3js-demos.git"
   },
   "scripts": {
     "build": "gatsby build",
