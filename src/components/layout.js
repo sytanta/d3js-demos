@@ -11,13 +11,13 @@ class Layout extends React.Component {
 
     const isRootPath = location.pathname === rootPath
 
-    const mainSectionStyle = isRootPath ?
-      {} :
-      {
-        display: `flex`,
-        justifyContent: `center`,
-        alignContent: `center`
-      }
+    const mainSectionStyle = isRootPath
+      ? {}
+      : {
+          display: `flex`,
+          justifyContent: `center`,
+          alignContent: `center`,
+        }
 
     if (isRootPath) {
       header = (
@@ -67,7 +67,8 @@ class Layout extends React.Component {
         style={{
           marginLeft: `auto`,
           marginRight: `auto`,
-          maxWidth: rhythm(24)
+          maxWidth: rhythm(24),
+          position: "relative",
         }}
       >
         <header>{header}</header>

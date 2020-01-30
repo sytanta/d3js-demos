@@ -1,0 +1,81 @@
+{
+    "date": "29 January 2020",
+    "data": {
+        "156": {
+            "infected": "5974",
+            "death": "170"
+        },
+        "344": {
+            "infected": "8",
+            "death": "0"
+        },
+        "446": {
+            "infected": "7",
+            "death": "0"
+        },
+        "158": {
+            "infected": "8",
+            "death": "0"
+        },
+        "392": {
+            "infected": "7",
+            "death": "0"
+        },
+        "410": {
+            "infected": "4",
+            "death": "0"
+        },
+        "704": {
+            "infected": "2",
+            "death": "0"
+        },
+        "702": {
+            "infected": "7",
+            "death": "0"
+        },
+        "36": {
+            "infected": "7",
+            "death": "0"
+        },
+        "458": {
+            "infected": "4",
+            "death": "0"
+        },
+        "116": {
+            "infected": "1",
+            "death": "0"
+        },
+        "764": {
+            "infected": "14",
+            "death": "0"
+        },
+        "524": {
+            "infected": "1",
+            "death": "0"
+        },
+        "144": {
+            "infected": "1",
+            "death": "0"
+        },
+        "840": {
+            "infected": "3",
+            "death": "0"
+        },
+        "124": {
+            "infected": "5",
+            "death": "0"
+        },
+        "250": {
+            "infected": "4",
+            "death": "0"
+        },
+        "276": {
+            "infected": "4",
+            "death": "0"
+        },
+        "784": {
+            "infected": "4",
+            "death": "0"
+        }
+    }
+}

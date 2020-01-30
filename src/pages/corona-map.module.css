@@ -1,0 +1,46 @@
+.d3Container {
+  margin-bottom: 2rem;
+}
+
+.overlay {
+  fill: none;
+  pointer-events: all;
+}
+
+.overlayNoPointerEvents {
+  fill: none;
+  pointer-events: none;
+}
+
+.land {
+  fill: #000;
+}
+
+.boundary {
+  fill: none;
+  stroke: #fff;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.tooltip {
+  border-radius: 3px;
+  position: absolute;
+  text-align: center;
+  width: fit-content;
+  height: auto;
+  padding: 8px 20px;
+  margin-top: -20px;
+  font: 10px sans-serif;
+  background: #ddd;
+  pointer-events: none;
+}
+.tooltip h5 {
+  font-size: 2rem;
+  margin: 0;
+  padding: 0 0 0.5rem;
+}
+
+.legend {
+  font-size: 0.9rem;
+}
