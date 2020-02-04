@@ -61,4 +61,13 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       value,
     })
   }
+
+  // Create a new field called "postImage" for each item in page-list.json
+  if (node.internal.type === `PageListJson`) {
+    createNodeField({
+      node,
+      name: `postImage`,
+      value: `../images/${node.image}`,
+    })
+  }
 }
