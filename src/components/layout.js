@@ -28,7 +28,8 @@ class Layout extends React.Component {
           marginLeft: `auto`,
           marginRight: `auto`,
           maxWidth: rhythm(42),
-          position: "relative",
+          padding: `0 0.8rem`,
+          position: `relative`,
         }}
       >
         <header>{header}</header>
