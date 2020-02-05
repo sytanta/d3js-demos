@@ -146,7 +146,7 @@ class collisionDetection extends Component {
                 }}
                 data-rellax-speed="-3"
                 data-rellax-xs-speed="-1"
-                data-rellax-mobile-speed="-1"
+                data-rellax-mobile-speed="-0.6"
                 data-rellax-tablet-speed="-2"
                 data-rellax-desktop-speed="-3"
               >
