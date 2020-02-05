@@ -121,7 +121,7 @@ class collisionDetection extends Component {
 
     new Rellax(".rellax", {
       speed: -2,
-      center: true,
+      center: false,
       wrapper: null,
       round: true,
       vertical: true,
@@ -145,9 +145,9 @@ class collisionDetection extends Component {
                   opacity: "0.2",
                 }}
                 data-rellax-speed="-3"
-                data-rellax-xs-speed="-5"
-                data-rellax-mobile-speed="-2"
-                data-rellax-tablet-speed="-6"
+                data-rellax-xs-speed="-1"
+                data-rellax-mobile-speed="-1"
+                data-rellax-tablet-speed="-2"
                 data-rellax-desktop-speed="-3"
               >
                 Collision Detection
