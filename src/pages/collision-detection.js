@@ -1,10 +1,11 @@
 import React, { Component } from "react"
-import * as d3 from "d3"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
 const initD3 = () => {
+  const d3 = window.d3
+
   const width = Math.min(document.documentElement.clientWidth, window.innerWidth, 960),
     height = Math.min(document.documentElement.clientHeight, window.innerHeight, 500)
 

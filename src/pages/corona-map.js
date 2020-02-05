@@ -1,12 +1,13 @@
 import React, { Component } from "react"
 import { graphql } from "gatsby"
-import * as d3 from "d3"
 import * as topojson from "topojson-client"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
 import classes from "./corona-map.module.css"
+
+const d3 = window.d3
 
 const initD3 = containerId => {
   const width = 960,
@@ -202,7 +203,7 @@ const mouseout = tooltip => {
   tooltip.style("display", "none")
 }
 
-class collisionDetection extends Component {
+class coronaMap extends Component {
   componentDidMount() {
     initD3("#d3-container-map")
   }
@@ -217,7 +218,7 @@ class collisionDetection extends Component {
   }
 }
 
-export default collisionDetection
+export default coronaMap
 
 export const pageQuery = graphql`
   query {
