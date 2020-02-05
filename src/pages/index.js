@@ -22,8 +22,8 @@ class Index extends React.Component {
         <SEO title={data.site.siteMetadata.title} />
         <div>
           <p>
-            Some D3js demos are written in older versions. I re-write them in
-            the latest version for better reference.
+            Some D3js demos are written in old versions. Here you can find some of them re-written in
+            a newer version.
           </p>
         </div>
         <div className={classes.container}>
