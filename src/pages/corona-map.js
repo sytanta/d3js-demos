@@ -7,9 +7,9 @@ import SEO from "../components/seo"
 
 import classes from "./corona-map.module.css"
 
-const d3 = window.d3
-
 const initD3 = containerId => {
+  const d3 = window.d3
+
   const width = 960,
     height = 550
 
@@ -18,11 +18,12 @@ const initD3 = containerId => {
     d3.json("/data/corona-infection-by-country.json"),
     d3.csv("/data/world-country-names.csv"),
   ]).then(result => {
-    makeMap(containerId, width, height, result[0], result[1], result[2])
+    makeMap(d3, containerId, width, height, result[0], result[1], result[2])
   })
 }
 
 const makeMap = (
+  d3,
   containerId,
   width,
   height,
@@ -59,7 +60,7 @@ const makeMap = (
     ])
     .scaleExtent([1, 8])
     .on("zoom", () => {
-      move(g)
+      move(d3, g)
     })
 
   const svg = d3
@@ -107,6 +108,7 @@ const makeMap = (
     })
     .on("mousemove", function(d) {
       mousemove(
+        d3,
         tooltip,
         countryNames[d.id],
         infectionData.data[d.id] || { infected: 0 }
@@ -171,7 +173,7 @@ const makeMap = (
     .style("alignment-baseline", "middle")
 }
 
-const move = g => {
+const move = (d3, g) => {
   g.attr("transform", d3.event.transform)
   const t = d3.event.transform,
     s = t.k
@@ -192,7 +194,7 @@ const mouseover = tooltip => {
   tooltip.style("display", "inline")
 }
 
-const mousemove = (tooltip, countryName, infectionData) => {
+const mousemove = (d3, tooltip, countryName, infectionData) => {
   tooltip
     .html(`<h5>${infectionData.infected}</h5><div>${countryName}</div>`)
     .style("left", d3.event.pageX - 34 + "px")
