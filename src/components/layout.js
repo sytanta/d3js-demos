@@ -4,6 +4,7 @@ import { rhythm } from "../utils/typography"
 
 import HeaderMain from "./header-main"
 import Header from "./header"
+import Footer from "./footer"
 
 class Layout extends React.Component {
   render() {
@@ -34,13 +35,7 @@ class Layout extends React.Component {
       >
         <header>{header}</header>
         <main style={mainSectionStyle}>{children}</main>
-        <footer style={{ paddingTop: "2rem" }}>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a> and
-          {` `}
-          <a href="https://d3js.org/">D3.js</a>
-        </footer>
+        <Footer />
       </div>
     )
   }
