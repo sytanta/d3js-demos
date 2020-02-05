@@ -127,6 +127,8 @@ class collisionDetection extends Component {
       vertical: true,
       horizontal: false,
     })
+
+    window.Prism.highlightAll()
   }
 
   render() {
@@ -164,8 +166,12 @@ class collisionDetection extends Component {
               </a>
             </p>
             <p>Version 5:</p>
-            <div className={classes.gatsbyHighlight} data-language="javascript">
-              <pre className="language-js">
+            <div className={classes.gatsbyHighlight}>
+              <pre
+                className="language-js"
+                data-language="javascript"
+                data-src="/libs/prism.js"
+              >
                 <code className="language-js">
                   {`const initD3 = container => {
   const d3 = window.d3
