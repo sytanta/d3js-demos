@@ -7,7 +7,7 @@ import Header from "./header"
 
 class Layout extends React.Component {
   render() {
-    const { location, children } = this.props
+    const { location, pageTitle, children } = this.props
     const rootPath = `${__PATH_PREFIX__}/`
 
     const isRootPath = location.pathname === rootPath
@@ -20,7 +20,7 @@ class Layout extends React.Component {
           alignContent: `center`,
         }
 
-    const header = isRootPath ? <HeaderMain /> : <Header />
+    const header = isRootPath ? <HeaderMain /> : <Header title={pageTitle} />
 
     return (
       <div

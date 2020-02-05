@@ -11,8 +11,9 @@ const Header = ({ title }) => (
       }}
       to={`/`}
     >
-      {title}
-    </Link>
+      Home
+    </Link>{` `}
+    > {title}
   </h3>
 )
 

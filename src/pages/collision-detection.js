@@ -110,8 +110,8 @@ class collisionDetection extends Component {
 
   render() {
     return (
-      <Layout location={this.props.location} title={this.props.data.site.siteMetadata.title}>
-        <SEO title="All posts" />
+      <Layout location={this.props.location} pageTitle="Collision Detection">
+        <SEO title="Collision Detection" />
         <div id="d3-container"></div>
       </Layout>
     )
@@ -119,13 +119,3 @@ class collisionDetection extends Component {
 }
 
 export default collisionDetection
-
-export const pageQuery = graphql`
-  query {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-  }
-`
