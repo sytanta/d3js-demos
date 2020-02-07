@@ -3,5 +3,10 @@
     "slug": "collision-detection",
     "title": "Collision Detection",
     "image": "pages/collision-detection.jpg"
+  },
+  {
+    "slug": "waterfall",
+    "title": "Waterfall Chart",
+    "image": "pages/waterfall.jpg"
   }
 ]

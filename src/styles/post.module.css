@@ -27,6 +27,7 @@
 
 /* Parallax class names */
 .pContainer {
+  pointer-events: none;
   position: absolute;
   width: 100%;
 }

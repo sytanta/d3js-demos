@@ -5,6 +5,7 @@
 
 .post {
   flex: 0 0 300px;
+  margin: 0.5rem;
   opacity: 0;
   transform: translateY(4em) rotateZ(-5deg);
   transition: transform 3s 0.25s cubic-bezier(0, 1, 0.3, 1),

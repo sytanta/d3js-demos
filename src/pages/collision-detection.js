@@ -115,7 +115,7 @@ const collide = node => {
   }
 }
 
-class collisionDetection extends Component {
+class CollisionDetection extends Component {
   componentDidMount() {
     initD3("d3-container")
 
@@ -291,4 +291,4 @@ const collide = node => {
   }
 }
 
-export default collisionDetection
+export default CollisionDetection
