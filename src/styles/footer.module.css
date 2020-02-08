@@ -5,6 +5,14 @@
   padding: 2rem 1rem;
 }
 
+.footer > div {
+  flex: 1;
+}
+.footer > div:nth-child(2) {
+  align-self: center;
+  text-align: right;
+}
+
 .footer a {
   box-shadow: none;
   margin: 0;
