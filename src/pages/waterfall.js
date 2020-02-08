@@ -3,6 +3,7 @@ import Rellax from "rellax"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import Disqus from "../components/disqus"
 
 import classes from "../styles/post.module.css"
 import chartClasses from "../styles/waterfall.module.css"
@@ -345,6 +346,7 @@ class Waterfall extends Component {
               </pre>
             </div>
           </div>
+          <Disqus slug="waterfall" title="Waterfall Chart" />
         </div>
       </Layout>
     )
