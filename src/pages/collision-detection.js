@@ -165,7 +165,6 @@ class CollisionDetection extends Component {
                 https://bl.ocks.org/mbostock/3231298
               </a>
             </p>
-            <p>Version 5:</p>
             <div className={classes.gatsbyHighlight}>
               <pre
                 className="language-js"
