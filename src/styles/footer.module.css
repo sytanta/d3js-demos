@@ -1,0 +1,16 @@
+.footer {
+  display: flex;
+  margin-top: 2rem;
+  justify-content: space-between;
+  padding: 2rem 1rem;
+}
+
+.footer a {
+  box-shadow: none;
+  margin: 0;
+  text-decoration: none;
+}
+
+.footer img {
+  margin: 0;
+}
