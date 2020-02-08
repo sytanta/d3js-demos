@@ -5,7 +5,7 @@ import { DiscussionEmbed } from "disqus-react"
 export default class Disqus extends Component {
   render() {
     const { slug, title } = this.props
-console.log('1111111111111111111111111111111', process.env.GATSBY_DISQUS_NAME)
+
     const disqusConfig = {
       shortname: process.env.GATSBY_DISQUS_NAME,
       config: { identifier: slug, title: title },

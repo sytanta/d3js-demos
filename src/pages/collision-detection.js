@@ -3,6 +3,7 @@ import Rellax from "rellax"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import Disqus from "../components/disqus"
 
 import classes from "../styles/post.module.css"
 
@@ -132,9 +133,14 @@ class CollisionDetection extends Component {
   }
 
   render() {
+    const { slug, title } = {
+      slug: "collision-detection",
+      title: "Collision Detection",
+    }
+
     return (
-      <Layout location={this.props.location} pageTitle="Collision Detection">
-        <SEO title="Collision Detection" />
+      <Layout location={this.props.location} pageTitle={title}>
+        <SEO title={title} />
         <div className={classes.container}>
           <div id="d3-container" className={classes.mapContainer}></div>
           <div>
@@ -284,6 +290,7 @@ const collide = node => {
               </pre>
             </div>
           </div>
+          <Disqus slug={slug} title={title} />
         </div>
       </Layout>
     )

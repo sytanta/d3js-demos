@@ -165,9 +165,11 @@ class Waterfall extends Component {
   }
 
   render() {
+    const { slug, title } = { slug: "waterfall", title: "Waterfall Chart" }
+
     return (
-      <Layout location={this.props.location} pageTitle="Waterfall Chart">
-        <SEO title="Waterfall Chart" />
+      <Layout location={this.props.location} pageTitle={title}>
+        <SEO title={title} />
         <div className={classes.container}>
           <div id="d3-container" className={classes.mapContainer}></div>
           <div>
@@ -346,7 +348,7 @@ class Waterfall extends Component {
               </pre>
             </div>
           </div>
-          <Disqus slug="waterfall" title="Waterfall Chart" />
+          <Disqus slug={slug} title={title} />
         </div>
       </Layout>
     )
