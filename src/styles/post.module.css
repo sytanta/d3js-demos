@@ -8,6 +8,7 @@
 }
 
 .mapContainer {
+  margin: 0 -0.8rem;
   text-align: center;
 }
 
@@ -27,9 +28,9 @@
 
 /* Parallax class names */
 .pContainer {
+  max-width: 90%;
   pointer-events: none;
   position: absolute;
-  width: 100%;
 }
 .p {
   color: darkblue;
