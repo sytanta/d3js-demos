@@ -29,7 +29,7 @@ const initD3 = container => {
 
   const y = d3.scaleLinear().range([height, 0])
 
-  const xAxis = d3.axisBottom(x)
+  const xAxis = d3.axisBottom(x).tickSize(30)
 
   const yAxis = d3.axisLeft(y).tickFormat(d => {
     return dollarFormatter(d)
@@ -74,11 +74,35 @@ const initD3 = container => {
       }),
     ])
 
-    chart
+    const xAxisElm = chart
       .append("g")
       .attr("class", `x ${chartClasses.axis}`)
       .attr("transform", "translate(0," + height + ")")
       .call(xAxis)
+
+    // Adjust tick size so that labels are readable on mobile
+    let alternateTicks = false,
+      alternateText = false
+    const shortTick = 6,
+      longTick = 18
+    xAxisElm.selectAll("line").attr("y2", function() {
+      if (alternateTicks) {
+        alternateTicks = false
+        return shortTick
+      } else {
+        alternateTicks = true
+        return longTick
+      }
+    })
+    xAxisElm.selectAll("text").attr("y", function() {
+      if (alternateText) {
+        alternateText = false
+        return shortTick + 3
+      } else {
+        alternateText = true
+        return longTick + 3
+      }
+    })
 
     chart
       .append("g")
@@ -119,6 +143,19 @@ const initD3 = container => {
       .text(d => {
         return dollarFormatter(d.end - d.start)
       })
+
+    // Rotate text vertically on mobile
+    if (width <= 500) {
+      bar
+        .selectAll("text")
+        .attr("dy", 0)
+        .attr("transform", function(d) {
+          return `rotate(-90 ${x.bandwidth() / 2} ${y(d.end)})`
+        })
+        .attr("dx", d => {
+          return (d.class === chartClasses.negative ? "" : "-") + "2.5em"
+        })
+    }
 
     bar
       .filter(d => {
@@ -222,7 +259,7 @@ class Waterfall extends Component {
 
   const y = d3.scaleLinear().range([height, 0])
 
-  const xAxis = d3.axisBottom(x)
+  const xAxis = d3.axisBottom(x).tickSize(30)
 
   const yAxis = d3.axisLeft(y).tickFormat(d => {
     return dollarFormatter(d)
@@ -267,11 +304,35 @@ class Waterfall extends Component {
       }),
     ])
 
-    chart
+    const xAxisElm = chart
       .append("g")
       .attr("class", \`x $\{chartClasses.axis}\`)
       .attr("transform", "translate(0," + height + ")")
       .call(xAxis)
+
+    // Adjust tick size so that labels are readable on mobile
+    let alternateTicks = false,
+      alternateText = false
+    const shortTick = 6,
+      longTick = 18
+    xAxisElm.selectAll("line").attr("y2", function() {
+      if (alternateTicks) {
+        alternateTicks = false
+        return shortTick
+      } else {
+        alternateTicks = true
+        return longTick
+      }
+    })
+    xAxisElm.selectAll("text").attr("y", function() {
+      if (alternateText) {
+        alternateText = false
+        return shortTick + 3
+      } else {
+        alternateText = true
+        return longTick + 3
+      }
+    })
 
     chart
       .append("g")
@@ -312,6 +373,19 @@ class Waterfall extends Component {
       .text(d => {
         return dollarFormatter(d.end - d.start)
       })
+
+    // Rotate text vertically on mobile
+    if (width <= 500) {
+      bar
+        .selectAll("text")
+        .attr("dy", 0)
+        .attr("transform", function(d) {
+          return \`rotate(-90 $\{x.bandwidth() / 2} $\{y(d.end)})\`
+        })
+        .attr("dx", d => {
+          return (d.class === chartClasses.negative ? "" : "-") + "2.5em"
+        })
+    }
 
     bar
       .filter(d => {
