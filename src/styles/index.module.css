@@ -23,6 +23,7 @@
 @media all and (max-width: 450px) {
   .container {
     flex-direction: column;
+    flex-wrap: nowrap;
   }
 
   .post {
