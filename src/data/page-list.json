@@ -5,6 +5,11 @@
     "image": "pages/collision-detection.jpg"
   },
   {
+    "slug": "corona-map",
+    "title": "nCoV Distribution",
+    "image": "pages/corona-map.jpg"
+  },
+  {
     "slug": "waterfall",
     "title": "Waterfall Chart",
     "image": "pages/waterfall.jpg"

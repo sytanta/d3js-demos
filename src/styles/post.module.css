@@ -31,3 +31,8 @@
   position: absolute;
   width: 100%;
 }
+.p {
+  color: darkblue;
+  font-size: 3.3rem;
+  opacity: 0.2;
+}
