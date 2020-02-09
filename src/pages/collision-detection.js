@@ -146,19 +146,14 @@ class CollisionDetection extends Component {
           <div>
             <div className={classes.pContainer}>
               <div
-                className="rellax"
-                style={{
-                  fontSize: "3.3rem",
-                  color: "darkblue",
-                  opacity: "0.2",
-                }}
+                className={`rellax ${classes.p}`}
                 data-rellax-speed="-3"
                 data-rellax-xs-speed="-1"
                 data-rellax-mobile-speed="-0.6"
                 data-rellax-tablet-speed="-2"
                 data-rellax-desktop-speed="-3"
               >
-                Collision Detection
+                {title}
               </div>
             </div>
             <p>
