@@ -12,23 +12,36 @@ import classesMap from "../styles/corona-map.module.css"
 const initD3 = containerId => {
   const d3 = window.d3
 
-  const width = Math.min(
+  const docWidth = Math.min(
       document.documentElement.clientWidth,
-      window.innerWidth,
-      960
+      window.innerWidth
     ),
+    width = Math.min(docWidth, 960),
     height = Math.min(
       document.documentElement.clientHeight,
       window.innerHeight,
-      500
+      Math.floor(width * 0.6)
     )
+
+  const mapContainerWidth = document.getElementById(`${containerId}`)
+    .offsetWidth
 
   Promise.all([
     d3.json("/data/world-50m.json"),
     d3.json("/data/corona-infection-by-country.json"),
     d3.csv("/data/world-country-names.csv"),
   ]).then(result => {
-    makeMap(d3, containerId, width, height, result[0], result[1], result[2])
+    makeMap(
+      d3,
+      containerId,
+      width,
+      height,
+      docWidth,
+      mapContainerWidth,
+      result[0],
+      result[1],
+      result[2]
+    )
   })
 }
 
@@ -37,6 +50,8 @@ const makeMap = (
   containerId,
   width,
   height,
+  docWidth,
+  mapContainerWidth,
   worldMapData,
   infectionData,
   countryNamesArr
@@ -119,7 +134,8 @@ const makeMap = (
     .on("mousemove", function(d) {
       mousemove(
         d3,
-        width,
+        docWidth,
+        mapContainerWidth,
         tooltip,
         countryNames[d.id],
         infectionData.data[d.id] || { infected: 0 }
@@ -143,45 +159,39 @@ const makeMap = (
     .attr("class", classesMap.boundary)
     .attr("d", path)
 
-  const labels = [
-    `Distribution of 2019-nCoV cases`,
-    infectionData.date,
-    `Source: WHO`,
-  ]
-
   // Legend content
   svg
     .append("rect")
-    .attr("x", -width / 2)
-    .attr("y", height / 2 - (labels.length + 2) * 20 - 10)
+    .attr("x", -width / 2 + 10)
+    .attr("y", height / 2 - 25)
     .attr("width", 20)
     .attr("height", 20)
     .style("fill", noInfectedColor)
   svg
     .append("text")
     .attr("class", classesMap.legend)
-    .attr("x", -width / 2 + 30)
-    .attr("y", height / 2 - (labels.length + 2) * 20 + 5)
+    .attr("x", -width / 2 + 40)
+    .attr("y", height / 2 - 10)
     .style("fill", "black")
     .text("Area without cases")
     .attr("text-anchor", "left")
     .style("alignment-baseline", "middle")
-  svg
-    .selectAll("legend")
-    .data(labels)
-    .enter()
-    .append("text")
-    .attr("class", classesMap.legend)
-    .attr("x", -width / 2)
-    .attr("y", function(d, i) {
-      return height / 2 - (labels.length - i) * 20
-    })
-    .style("fill", "black")
-    .text(function(d) {
-      return d
-    })
-    .attr("text-anchor", "left")
-    .style("alignment-baseline", "middle")
+  // svg
+  //   .selectAll("legend")
+  //   .data(labels)
+  //   .enter()
+  //   .append("text")
+  //   .attr("class", classesMap.legend)
+  //   .attr("x", -width / 2)
+  //   .attr("y", function(d, i) {
+  //     return height / 2 - (labels.length - i) * 20
+  //   })
+  //   .style("fill", "black")
+  //   .text(function(d) {
+  //     return d
+  //   })
+  //   .attr("text-anchor", "left")
+  //   .style("alignment-baseline", "middle")
 }
 
 const move = (d3, g) => {
@@ -191,8 +201,7 @@ const move = (d3, g) => {
 
   g.style("stroke-width", 1 / s).attr(
     "transform",
-    // "translate(" + [t.x, t.y] + ")scale(" + s + ")",
-    `translate([${t.x}, ${t.y}])scale(${s})`
+    `translate(${t.x},${t.y})scale(${s})`
   )
 }
 
@@ -200,13 +209,15 @@ const mouseover = tooltip => {
   tooltip.style("display", "inline")
 }
 
-const mousemove = (d3, width, tooltip, countryName, infectionData) => {
-  const x =
-    d3.event.pageX +
-    130 -
-    (Math.min(document.documentElement.clientWidth, window.innerWidth) -
-      width) /
-      2
+const mousemove = (
+  d3,
+  docWidth,
+  mapContainerWidth,
+  tooltip,
+  countryName,
+  infectionData
+) => {
+  const x = d3.event.pageX - (docWidth - mapContainerWidth) / 2
 
   tooltip
     .html(`<h5>${infectionData.infected}</h5><div>${countryName}</div>`)
@@ -258,6 +269,13 @@ class CoronaMap extends Component {
                 {title}
               </div>
             </div>
+            <div>
+              Distribution of 2019-nCoV cases
+              <br />
+              29 January 2020
+              <br />
+              Source: WHO
+            </div>
             <div className={classes.gatsbyHighlight}>
               <pre
                 className="language-js"
@@ -268,15 +286,36 @@ class CoronaMap extends Component {
                   {`const initD3 = containerId => {
   const d3 = window.d3
 
-  const width = 960,
-    height = 550
+  const docWidth = Math.min(
+      document.documentElement.clientWidth,
+      window.innerWidth
+    ),
+    width = Math.min(docWidth, 960),
+    height = Math.min(
+      document.documentElement.clientHeight,
+      window.innerHeight,
+      Math.floor(width * 0.6)
+    )
+
+  const mapContainerWidth = document.getElementById(\`$\{containerId}\`)
+    .offsetWidth
 
   Promise.all([
     d3.json("/data/world-50m.json"),
     d3.json("/data/corona-infection-by-country.json"),
     d3.csv("/data/world-country-names.csv"),
   ]).then(result => {
-    makeMap(d3, containerId, width, height, result[0], result[1], result[2])
+    makeMap(
+      d3,
+      containerId,
+      width,
+      height,
+      docWidth,
+      mapContainerWidth,
+      result[0],
+      result[1],
+      result[2]
+    )
   })
 }
 
@@ -285,6 +324,8 @@ const makeMap = (
   containerId,
   width,
   height,
+  docWidth,
+  mapContainerWidth,
   worldMapData,
   infectionData,
   countryNamesArr
@@ -322,7 +363,7 @@ const makeMap = (
     })
 
   const svg = d3
-    .select(\`#$\\{containerId}\`)
+    .select(\`#$\{containerId}\`)
     .append("svg")
     .attr("width", width)
     .attr("height", height)
@@ -367,7 +408,8 @@ const makeMap = (
     .on("mousemove", function(d) {
       mousemove(
         d3,
-        width,
+        docWidth,
+        mapContainerWidth,
         tooltip,
         countryNames[d.id],
         infectionData.data[d.id] || { infected: 0 }
@@ -391,43 +433,21 @@ const makeMap = (
     .attr("class", classesMap.boundary)
     .attr("d", path)
 
-  const labels = [
-    \`Distribution of 2019-nCoV cases\`,
-    infectionData.date,
-    \`Source: WHO\`,
-  ]
-
   // Legend content
   svg
     .append("rect")
-    .attr("x", -width / 2)
-    .attr("y", height / 2 - (labels.length + 2) * 20 - 10)
+    .attr("x", -width / 2 + 10)
+    .attr("y", height / 2 - 25)
     .attr("width", 20)
     .attr("height", 20)
     .style("fill", noInfectedColor)
   svg
     .append("text")
     .attr("class", classesMap.legend)
-    .attr("x", -width / 2 + 30)
-    .attr("y", height / 2 - (labels.length + 2) * 20 + 5)
+    .attr("x", -width / 2 + 40)
+    .attr("y", height / 2 - 10)
     .style("fill", "black")
     .text("Area without cases")
-    .attr("text-anchor", "left")
-    .style("alignment-baseline", "middle")
-  svg
-    .selectAll("legend")
-    .data(labels)
-    .enter()
-    .append("text")
-    .attr("class", classesMap.legend)
-    .attr("x", -width / 2)
-    .attr("y", function(d, i) {
-      return height / 2 - (labels.length - i) * 20
-    })
-    .style("fill", "black")
-    .text(function(d) {
-      return d
-    })
     .attr("text-anchor", "left")
     .style("alignment-baseline", "middle")
 }
@@ -439,7 +459,7 @@ const move = (d3, g) => {
 
   g.style("stroke-width", 1 / s).attr(
     "transform",
-    \`translate([$\{t.x}, $\{t.y}])scale($\{s})\`
+    \`translate($\{t.x},$\{t.y})scale($\{s})\`
   )
 }
 
@@ -447,8 +467,15 @@ const mouseover = tooltip => {
   tooltip.style("display", "inline")
 }
 
-const mousemove = (d3, width, tooltip, countryName, infectionData) => {
-  const x = d3.event.pageX + 130 - (Math.min(document.documentElement.clientWidth, window.innerWidth) - width) / 2
+const mousemove = (
+  d3,
+  docWidth,
+  mapContainerWidth,
+  tooltip,
+  countryName,
+  infectionData
+) => {
+  const x = d3.event.pageX - (docWidth - mapContainerWidth) / 2
 
   tooltip
     .html(\`<h5>$\{infectionData.infected}</h5><div>$\{countryName}</div>\`)
