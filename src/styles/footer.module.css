@@ -1,15 +1,15 @@
 .footer {
   display: flex;
-  margin-top: 2rem;
   justify-content: space-between;
   padding: 2rem 1rem;
 }
 
 .footer > div {
-  flex: 1;
+  flex: 2;
 }
 .footer > div:nth-child(2) {
   align-self: center;
+  flex: 1;
   text-align: right;
 }
 
